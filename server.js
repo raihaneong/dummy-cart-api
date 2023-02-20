@@ -11,6 +11,10 @@ app.use(cors());
 app.use(express.static("public"));
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.send('Hey this is my API running 🥳')
+})
+
 app.post("/checkout", async (req, res) => {
     /*
     req.body.items
