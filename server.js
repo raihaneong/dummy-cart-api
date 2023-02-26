@@ -8,20 +8,21 @@
 
 const express = require("express");
 var cors = require("cors");
-const stripe = require("stripe")("sk_test_51KyuwzK6L9E8BuRsmCOP54PoJUTsPfD9npTgfoOIeTve5gkBEUQXV63Bqux9KLxwtN1l5mBB5P9NjJcDukjgxovq00eRD0oHU1");
+const stripe = require("stripe")(
+  "sk_test_51KyuwzK6L9E8BuRsmCOP54PoJUTsPfD9npTgfoOIeTve5gkBEUQXV63Bqux9KLxwtN1l5mBB5P9NjJcDukjgxovq00eRD0oHU1"
+);
 
 const app = express();
 app.use(cors());
 app.use(express.static("public"));
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 app.post("/checkout", async (req, res) => {
-
-    console.log(req.body)
+  console.log(req.body);
   const items = req.body.items;
   let lineItems = [];
   items.forEach((item) => {
@@ -30,15 +31,12 @@ app.post("/checkout", async (req, res) => {
       quantity: item.quantity,
     });
   });
-    
 
   const session = await stripe.checkout.sessions.create({
     line_items: lineItems,
     mode: "payment",
-    success_url:
-      "https://63fb802cf2bf7b7df44d9537--dummy-cart.netlify.app/success",
-    cancel_url:
-      "https://63fb802cf2bf7b7df44d9537--dummy-cart.netlify.app/cancel",
+    success_url: "https://dummy-cart.netlify.app/success",
+    cancel_url: "https://dummy-cart.netlify.app/cancel",
   });
 
   res.send(
