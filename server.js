@@ -18,7 +18,7 @@ app.use(express.static("public"));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Hello World! dan yep API nya jalan");
 });
 
 app.post("/checkout", async (req, res) => {
