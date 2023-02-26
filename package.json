@@ -17,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/raihaneong/dummy-cart-api/issues"
   },
-  "homepage": "https://github.com/raihaneong/dummy-cart-api#readme"
+  "homepage": "https://github.com/raihaneong/dummy-cart-api#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "stripe": "^11.12.0"
+  }
 }
