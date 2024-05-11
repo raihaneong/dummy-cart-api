@@ -9,7 +9,7 @@
 const express = require("express");
 var cors = require("cors");
 const stripe = require("stripe")(
-  "rhn_stipe_api"
+  "sk_test_51KyuwzK6L9E8BuRsmCOP54PoJUTsPfD9npTgfoOIeTve5gkBEUQXV63Bqux9KLxwtN1l5mBB5P9NjJcDukjgxovq00eRD0oHU1"
 );
 
 const app = express();
